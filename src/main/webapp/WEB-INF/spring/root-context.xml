@@ -58,7 +58,9 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		p:maxUploadSizePerFile="3145728"/>
 	-->						 
-							 
+	<context:component-scan base-package="team1.project.bookshop.model" />
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+	p:maxUploadSizePerFile="3145728"/>						 
 	<!-- jackson data binder 등록 
 		   json 과 자바객체 사이의 자동 변환기(Converter)
 	 -->
