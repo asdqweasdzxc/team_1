@@ -22,7 +22,7 @@
                             <li><a href="#"><%=inquiry_category.getInquiry_category_name() %></a></li>
                             <%} %>
                             
-                            <li><a href="#">Shop</a></li>
+                            <li><a href="/book/search">도서검색</a></li>
                             <li><a href="#">고객센터</a>
                                 <ul class="dropdown">
                                     <li><a href="./product-details.html">상품문의</a></li>
