@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookTopCategory">
+	
+	<resultMap type="BookTopCategory" id="topCategoryMap">
+		<id		column="book_top_category_idx"		property="bookTopCategory_idx"/>
+		<result	column="top_category_name"	property="bookTopCategory_name"/>
+	</resultMap>
+		
+
+	<insert id="insert" parameterType="BookTopCategory">
+		insert into book_top_category(top_category_name)
+		values(#{bookTopCategory_name})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from book_top_category
+		where book_top_category_idx = #{bookTopCategory_idx}
+		
+
+	</delete>
+	
+	<select id="selectAll" resultMap="topCategoryMap">
+		select * from book_top_category order by book_top_category_idx asc
+	</select>
+	
+	<update id="update" parameterType="BookTopCategory">
+		update book_top_category set top_category_name=#{top_category_name}
+		where book_top_category_idx=#{book_top_cateogy_idx}
+	</update>
+	
+	<select id="select" parameterType="int" resultMap="topCategoryMap">
+		select * from book_top_category where book_top_category_idx=#{bookTopCategory_idx}
+	</select>
+	
+	<select id="selectByName" parameterType="BookTopCategory" resultMap="topCategoryMap">
+		select * from book_top_category where top_category_name like concat('%', #{bookTopCategory_name}, '%')
+	</select>
+	
+</mapper>

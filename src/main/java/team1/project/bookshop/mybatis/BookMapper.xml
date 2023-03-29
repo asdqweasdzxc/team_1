@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Book">
+
+	<resultMap type="Book" id="BookMap">
+		<id		column="book_idx"			property="book_idx"/>
+		<result	column="book_name"		property="book_name"/>
+		<result	column="writer"				property="writer"/>
+		<result	column="summary"			property="summary"/>
+		<result	column="publisher"			property="publisher"/>
+		<result	column="create_date"		property="create_date"/>
+		<result	column="admin_name"	property="admin_name"/>
+		<result	column="price"				property="price"/>
+		<result	column="discount"			property="discount"/>
+		<result	column="point"				property="point"/>
+
+		<association 
+		column="book_sub_category_idx" 
+		property="bookSubCategory"
+		javaType="BookSubCategory"
+		select="BookSubCategory.select"
+		/>
+		
+		<association 
+		column="booktype_idx"
+		property="bookType"
+		javaType="BookType"
+		select="Booktype.select"
+		/>
+		
+	</resultMap>
+	
+	<select id="selectAll" resultMap="BookMap">
+		select * from book	
+	</select>
+	
+	<insert id="insert" parameterType="Book">
+		insert into book(book_sub_category_idx, book_name, writer, summary, publisher, admin_name, price, discount, point, booktype_idx, filename)
+		values(#{bookSubCategory.bookSubCategory_idx}, #{book_name}, #{writer}, #{summary}, #{publisher}, #{admin_name}, #{price}, #{discount}, #{point}, #{bookType.bookType_idx}, #{filename})
+	</insert> 
+	
+	<delete id="delete" parameterType="int">
+		delete from book where book_idx = #{book_idx}
+	</delete>
+	
+	<select id="selectByName" parameterType="Book" resultMap="BookMap">
+		select * from book 
+		where book_sub_category_idx in(select book_sub_category_idx from book_sub_category where book_top_category_idx =#{bookSubCategory.bookTopCategory.bookTopCategory_idx} )
+		and (book_name regexp #{book_name}
+		or	writer regexp #{book_name})
+	</select>
+	
+	<select id="selectBySubCategory" parameterType="int" resultMap="BookMap">
+		select * from book where book_sub_category_idx = #{bookSubCategory_idx}
+	</select>
+	
+	<select id="select" parameterType="int" resultMap="BookMap">
+		select * from book where book_idx = #{book_idx}
+	</select>
+	
+	<select id="selectForPage" parameterType="int" resultMap="BookMap">
+		select * from book where book_idx > #{book_idx}
+	</select>
+	
+	<select id="selectByWord" parameterType="String" resultMap="BookMap">
+		select * from book 
+		where book_name like CONCAT('%', #{book_name}, '%')
+		or writer like CONCAT('%', #{book_name}, '%')
+	</select>
+	
+</mapper>

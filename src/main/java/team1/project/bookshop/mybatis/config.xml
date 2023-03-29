@@ -7,12 +7,20 @@
   		<typeAlias type="team1.project.bookshop.domain.Admin" 	alias="Admin"/>
   		<typeAlias type="team1.project.bookshop.domain.Notice" 	alias="Notice"/>
   		<typeAlias type="team1.project.bookshop.domain.Inquiry_category" 	alias="Inquiry_category"/>
+  		<typeAlias type="team1.project.bookshop.domain.Book" alias="Book"/>
+		<typeAlias type="team1.project.bookshop.domain.BookType" alias="BookType"/>
+		<typeAlias type="team1.project.bookshop.domain.BookTopCategory" alias="BookTopCategory"/>
+		<typeAlias type="team1.project.bookshop.domain.BookSubCategory" alias="BookSubCategory"/>
   </typeAliases>
   
   <mappers>
   		<mapper resource="team1/project/bookshop/mybatis/AdminMapper.xml"/>
   		<mapper resource="team1/project/bookshop/mybatis/NoticeMapper.xml"/>
   		<mapper resource="team1/project/bookshop/mybatis/Inquiry_categoryMapper.xml"/>
+  		<mapper resource="team1/project/bookshop/mybatis/BookMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/BookTopCategoryMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/BookSubCategoryMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/BookTypeMapper.xml"/>
   </mappers>
   
 </configuration>

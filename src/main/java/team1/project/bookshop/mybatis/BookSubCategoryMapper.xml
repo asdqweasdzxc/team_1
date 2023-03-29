@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookSubCategory">
+	<!-- BookTopCategory 레코드 가져오기 -->
+	<resultMap type="BookSubCategory" id="BookSubCategoryMap">
+		<id		column="book_sub_category_idx"	property="bookSubCategory_idx"/>
+		<result	column="sub_category_name" property="bookSubCategory_name"/>
+		
+		<!-- 부모테이블과 연결 -->
+		<association 
+		column="book_top_category_idx"
+		property="bookTopCategory"
+		javaType="BookTopCategory"
+		select="BookTopCategory.select"
+		/>
+	</resultMap>
+	
+	<select id="selectAll" resultMap="BookSubCategoryMap">
+		select * from book_sub_category order by book_top_category_idx asc
+	</select>
+	
+	<insert id="insert" parameterType="BookSubCategory">
+		insert into book_sub_category(book_top_category_idx, sub_category_name)
+		values(#{bookTopCategory.bookTopCategory_idx}, #{bookSubCategory_name})
+	</insert>
+	
+	<select id="select" parameterType="int" resultMap="BookSubCategoryMap">
+		select * from book_sub_category where book_sub_category_idx=#{bookSubCategory_idx}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from book_sub_cateogry where book_sub_category_idx=#{bookSubCategory_idx}
+	</delete>
+	
+	<select id="selectByTopCategory" parameterType="int" resultMap="BookSubCategoryMap">
+		select * from book_sub_category where book_top_category_idx = #{bookTopCategory_idx}
+	</select>
+	
+</mapper>
