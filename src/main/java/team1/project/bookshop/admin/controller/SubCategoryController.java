@@ -32,7 +32,7 @@ public class SubCategoryController {
 		
 		subcategoryService.delete(bookSubCategory_idx);
 		
-		return new ModelAndView("redirect:/admin/subcategoryList");
+		return new ModelAndView("redirect:/admin/product/subcategoryList");
 	}
 	
 	

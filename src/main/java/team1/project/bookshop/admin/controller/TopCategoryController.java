@@ -25,7 +25,7 @@ public class TopCategoryController {
 	public ModelAndView getTopCategoryList() {
 		
 		
-		ModelAndView mav = new ModelAndView("admin/topcategorys");
+		ModelAndView mav = new ModelAndView("admin/product/topcategorys");
 		
 		
 		
@@ -47,7 +47,7 @@ public class TopCategoryController {
 		logger.info(""+bookTopCategory);
 		List topcategoryList = bookTopcategoryService.selectByName(bookTopCategory);
 		
-		ModelAndView mav = new ModelAndView("admin/topcategorys");
+		ModelAndView mav = new ModelAndView("admin/product/topcategorys");
 		mav.addObject("topcategoryList", topcategoryList);
 		
 		return mav;
