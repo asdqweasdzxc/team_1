@@ -12,6 +12,8 @@ import com.edu.springshop.domain.Pimg;
 import com.edu.springshop.domain.Product;
 import com.edu.springshop.exception.UploadException;
 
+import team1.project.bookshop.domain.Book;
+
 @Component
 public class FileManager {
 
@@ -23,6 +25,32 @@ public class FileManager {
 		
 		return time+"."+ext;
 	} 
+	
+	
+	//책이미지를 등록하는 save
+	public String save(Book book, String dir) {
+		MultipartFile file = book.getMyfile();
+		
+		
+		String filename = file.getOriginalFilename();
+		
+		
+		String getfilename=createFileName(filename);
+		
+		try {
+			file.transferTo(new File(dir+getfilename));
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return getfilename;
+	}
+	
+	
 	
 	//지정된 디렉토리로 파일 저장 dir 저장될 디렉토리 위치
 	public void save(Product product, String dir) throws UploadException{
