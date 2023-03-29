@@ -73,17 +73,17 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="/admin/category/main"
+						<li class="nav-item"><a href="/admin/category/top"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>카테고리관리</p>
+								<p>상위 카테고리관리</p>
 						</a></li>
-						<li class="nav-item"><a href="/admin/product/registform"
+						<li class="nav-item"><a href="/admin/category/sub"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								<p>상품관리</p>
+								<p>하위 카테고리관리</p>
 						</a></li>
-						<li class="nav-item"><a href="./index2.html" class="nav-link">
+						<li class="nav-item"><a href="/admin/book/registform" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
-								<p>일괄등록</p>
+								<p>도서 등록</p>
 						</a></li>
 						
 					</ul></li>
