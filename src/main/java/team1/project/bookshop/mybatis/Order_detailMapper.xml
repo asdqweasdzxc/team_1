@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Order_detail">
+	<resultMap type="Order_detail" id="Order_detailMap">
+		<id column="order_detail_idx" property="order_detail_idx"/>
+		<result column="final_price" property="final_price"/>
+		<result column="quantity" property="quantity"/>
+		<result column="refund" property="refund"/>
+		
+		<association
+		column="orders_idx"
+		property="orders"
+		javaType="Orders"
+		select="Orders.select"/>
+		
+		<association
+		column="book_idx"
+		property="book"
+		javaType="Book"
+		select="Book.select"/>
+	</resultMap>
+
+	<select id="selectAll" parameterType="Order_detail" resultMap="Order_detailMap">
+		select * from order_detail where orders_idx=#{orders.orders_idx} order by order_detail_idx desc
+	</select>
+
+	<select id="select" parameterType="Order_detail" resultType="Order_detail">
+		select * from order_detail where order_detail_idx=#{order_detail_idx}
+	</select>
+	
+	<insert id="insert" parameterType="Order_detail">
+		insert into order_detail(orders_idx, book_idx, final_price, quantity, refund)
+		values(#{orders.orders_idx}, #{book.book_idx}, #{final_price}, #{quantity}, #{refund})
+	</insert>
+	
+	<delete id="delete" parameterType="Order_detail">
+		delete from order_detail where order_detail_idx=#{order_detail_idx}
+	</delete>
+</mapper>

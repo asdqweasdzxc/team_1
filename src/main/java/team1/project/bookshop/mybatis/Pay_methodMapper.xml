@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pay_method">
+	<select id="selectAll" resultType="Pay_method">
+		select * from pay_method order by pay_method_idx asc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="Pay_method">
+		select * from pay_method where pay_method_idx=#{pay_method_idx}
+	</select>
+	
+	<insert id="insert" parameterType="Pay_method">
+		insert into pay_method(payment) values(#{payment})
+	</insert>
+	
+	<update id="update" parameterType="Pay_method">
+		update pay_method set payment=#{payment}
+		where pay_method_idx=#{pay_method_idx}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from pay_method where pay_method_idx=#{pay_method_idx}
+	</delete>
+</mapper>

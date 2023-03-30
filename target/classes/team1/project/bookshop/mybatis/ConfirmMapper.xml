@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Confirm">
+	<resultMap type="Confirm" id="ConfirmMap">
+		<id column="confirm_idx" property="confirm_idx"/>
+		<result column="order_checked" property="order_checked"/>
+		
+		<association
+		column="admin_idx"
+		property="admin"
+		javaType="Admin"
+		select="Admin.select"/>
+		
+		<association 
+		column="orders_idx"
+		property="orders"
+		javaType="Orders"
+		select="Orders.select"/>
+	</resultMap>
+
+	<select id="selectAll" resultMap="ConfirmMap">
+		select * from confirm order by confirm_idx asc
+	</select>
+	
+	<select id="select" parameterType="Confirm" resultType="Confirm">
+		select * from confirm where confirm_idx=#{confirm_idx} and order_number=#{orders.order_number}
+	</select>
+	
+	<insert id="insert" parameterType="Confirm">
+		insert into confirm(admin_idx, orders_idx)
+		values(#{admin.admin_idx}, #{orders.orders_idx})
+	</insert>
+	
+	<update id="update" parameterType="boolean">
+		update confirm set order_checked=#{order_checked}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from confirm where confirm_idx=#{confirm_idx}
+	</delete>
+</mapper>

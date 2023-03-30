@@ -17,6 +17,13 @@
 		<typeAlias type="team1.project.bookshop.domain.BookType" alias="BookType"/>
 		<typeAlias type="team1.project.bookshop.domain.BookTopCategory" alias="BookTopCategory"/>
 		<typeAlias type="team1.project.bookshop.domain.BookSubCategory" alias="BookSubCategory"/>
+		<typeAlias type="team1.project.bookshop.domain.Cart" alias="Cart"/>
+		<typeAlias type="team1.project.bookshop.domain.Confirm" alias="Confirm"/>
+		<typeAlias type="team1.project.bookshop.domain.Current_ship_condition" alias="Current_ship_condition"/>
+		<typeAlias type="team1.project.bookshop.domain.Order_detail" alias="Order_detail"/>
+		<typeAlias type="team1.project.bookshop.domain.Orders" alias="Orders"/>
+		<typeAlias type="team1.project.bookshop.domain.Pay_method" alias="Pay_method"/>
+		<typeAlias type="team1.project.bookshop.domain.Ship_condition" alias="Ship_condition"/>
   </typeAliases>
   
   <mappers>
@@ -33,6 +40,13 @@
   		<mapper resource="team1/project/bookshop/mybatis/Inquiry_categoryMapper.xml"/>
   		<mapper resource="team1/project/bookshop/mybatis/Inquiry_imgMapper.xml"/>
   		<mapper resource="team1/project/bookshop/mybatis/InquiryMapper.xml"/>
+  		<mapper resource="team1/project/bookshop/mybatis/CartMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/ConfirmMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/Current_ship_conditionMapper.xml"/>
+	     <mapper resource="team1/project/bookshop/mybatis/Order_detailMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/OrdersMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/Pay_methodMapper.xml"/>
+	    <mapper resource="team1/project/bookshop/mybatis/Ship_conditionMapper.xml"/>
   </mappers>
   
 </configuration>

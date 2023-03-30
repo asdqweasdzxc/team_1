@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ship_condition">
+	<select id="selectAll" resultType="Ship_condition">
+		select * from ship_condition order by ship_condition_idx asc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="Ship_condition">
+		select * from ship_condition where ship_condition_idx=#{ship_condition_idx}
+	</select>
+	
+	<insert id="insert" parameterType="Ship_condition">
+		insert into ship_condition(ship_condition_info) values(#{ship_condition_info})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from ship_condition where ship_condition_idx=#{ship_condition_idx}
+	</delete>
+</mapper>

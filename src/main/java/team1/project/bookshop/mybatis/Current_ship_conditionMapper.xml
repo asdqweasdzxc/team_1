@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Current_ship_condition">
+	<resultMap type="Current_ship_condition" id="Current_ship_conditionMap">
+		<id column="current_ship_condition_idx" property="current_ship_condition_idx"/>
+		<result column="invoice_number" property="invoice_number"/>
+		
+		<association 
+		column="ship_condition_idx"
+		property="ship_condition"
+		javaType="Ship_condition"
+		select="Ship_condition.select"/>
+		
+		<association 
+		column="orders_idx"
+		property="orders"
+		javaType="Orders"
+		select="Orders.select"/>
+	</resultMap>
+	
+	<select id="selectAll" resultMap="Current_ship_conditionMap">
+		select * from current_ship_condition order by current_ship_condition_idx desc
+	</select>
+	
+	<select id="select" parameterType="Current_ship_condition" resultMap="Current_ship_conditionMap">
+		select * from current_ship_condition where current_ship_condition_idx=#{current_ship_condition_idx}
+	</select>
+	
+	<insert id="insert" parameterType="Current_ship_condition">
+		insert into current_ship_condition(orders_idx, ship_condition_idx, invoice_number)
+		values(#{orders.orders_idx},#{ship_condition.ship_condition_idx},#{invoice_number})
+	</insert>
+	
+	<update id="update" parameterType="Current_ship_condition">
+		update current_ship_condition set ship_condition_idx=#{ship_condition.ship_condition_idx} 
+		where current_ship_condition_idx=#{current_ship_condition_idx}
+	</update>
+</mapper>
