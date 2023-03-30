@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import team1.project.bookshop.domain.Cart;
 import team1.project.bookshop.domain.Member;
 import team1.project.bookshop.exception.CartException;
-import team1.project.bookshop.order.model.CartService;
+import team1.project.bookshop.model.order.CartService;
 import team1.project.bookshop.util.Message;
 
 @RestController

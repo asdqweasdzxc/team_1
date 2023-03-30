@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="./inc/header.jsp"%>
+<%@ include file="../inc/header.jsp"%>
 <%!
 	int member_idx=2;
 %>
@@ -14,14 +14,14 @@
 %>
 </head>
 <body>
-    <%@ include file="./inc/preloader.jsp" %>
+    <%@ include file="../inc/preloader.jsp" %>
 
     <!-- Offcanvas Menu Begin -->
-    <%@ include file="./inc/main_navi.jsp"%>
+    <%@ include file="../inc/main_navi.jsp"%>
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <%@ include file="./inc/header_section.jsp"%>
+    <%@ include file="../inc/header_section.jsp"%>
     <!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
@@ -114,19 +114,19 @@
     <!-- Shop Cart Section End -->
 
     <!-- Instagram Begin -->
-    <%@ include file="./inc/instar.jsp" %>
+    <%@ include file="../inc/instar.jsp" %>
     <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
-    <%@ include file="./inc/footer.jsp" %>
+    <%@ include file="../inc/footer.jsp" %>
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
-    <%@ include file="./inc/search.jsp" %>
+    <%@ include file="../inc/search.jsp" %>
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <%@ include file="./inc/footer_link.jsp" %>
+    <%@ include file="../inc/footer_link.jsp" %>
 <script type="text/javascript">
 var clientKey = 'test_ck_D4yKeq5bgrpokQP5OwJVGX0lzW6Y';
 var tossPayments = TossPayments(clientKey); 	// 클라이언트 키로 초기화하기
