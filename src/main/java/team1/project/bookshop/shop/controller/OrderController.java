@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import team1.project.bookshop.model.order.OrdersService;
+import team1.project.bookshop.order.model.OrdersService;
 
 @Controller
 public class OrderController {
@@ -25,5 +25,10 @@ public class OrderController {
 		ModelAndView mav = new ModelAndView("admin/order/orderList");
 		mav.addObject("orderList", orderList);
 		return mav;
+	}
+	
+	@GetMapping("/ordercomp")
+	public ModelAndView getOrderComp() {
+		return new ModelAndView("shop/shop");
 	}
 }

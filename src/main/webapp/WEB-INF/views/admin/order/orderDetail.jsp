@@ -154,7 +154,6 @@
 			      <label>송장번호</label>
 			      <input type="text" class="form-control" name="invoice_number" readonly>
 			    </div>
-			    <button type="button" class="btn btn-primary" id="bt_edit">배송현황 변경</button>
 			  </form>
 			</div>
 			<!-- /.세부사항 -->
@@ -242,12 +241,6 @@ function getShip_condition(){
 	});
 }
 
-function edit(){
-	if(!confirm("수?정")){
-		return;
-	}
-}
-
 $(function(){
 	// 비동기로 Orders 목록 가져오기
 	getOrder_detailList();
@@ -270,10 +263,6 @@ $(function(){
 				$("#form2 input[name='ship_condition']").val(result.ship_condition.ship_condition_info);
 			}
 		});
-	});
-	
-	$("#bt_edit").click(function(){
-		edit();
 	});
 });
 </script>

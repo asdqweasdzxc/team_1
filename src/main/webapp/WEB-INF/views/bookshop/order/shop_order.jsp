@@ -2,17 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="../inc/header.jsp"%>
+    <%@ include file="./inc/header.jsp"%>
+<%!
+	int member_idx=2;
+%>
 </head>
 <body>
-    <%@ include file="../inc/preloader.jsp" %>
+    <%@ include file="./inc/preloader.jsp" %>
 
     <!-- Offcanvas Menu Begin -->
-    <%@ include file="../inc/main_navi.jsp"%>
+    <%@ include file="./inc/main_navi.jsp"%>
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <%@ include file="../inc/header_section.jsp"%>
+    <%@ include file="./inc/header_section.jsp"%>
     <!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
@@ -23,6 +26,7 @@
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
                         <span>Shopping cart</span>
+                        <input type="hidden" value="<%=member_idx%>" id="member">
                     </div>
                 </div>
             </div>
@@ -57,13 +61,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="discount__content">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="button" class="site-btn">Apply</button>
-                        </form>
-                    </div>
+                   <a href="javascript:ordercomp()" class="primary-btn">go comp</a>
                 </div>
                 <div class="col-lg-4 offset-lg-2">
                     <div class="cart__total__procced">
@@ -81,19 +79,19 @@
     <!-- Shop Cart Section End -->
 
     <!-- Instagram Begin -->
-    <%@ include file="../inc/insta.jsp" %>
+    <%@ include file="./inc/instar.jsp" %>
     <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
-    <%@ include file="../inc/footer.jsp" %>
+    <%@ include file="./inc/footer.jsp" %>
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
-    <%@ include file="../inc/search.jsp" %>
+    <%@ include file="./inc/search.jsp" %>
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <%@ include file="../inc/footer_link.jsp" %>
+    <%@ include file="./inc/footer_link.jsp" %>
     
 <script type="text/javascript">
 let app1;
@@ -105,7 +103,7 @@ function payment(){
 	tossPayments.requestPayment('카드', { // 결제 수단 파라미터
 		  // 결제 정보 파라미터
 		  amount: 1234,
-		  orderId: '1m4iXoezQoy0LyB1KMbda',
+		  orderId: 'dp96vG5YwC_oG9zgRgOGG',
 		  orderName: '토스 티셔츠 외 2건',
 		  customerName: '박토스',
 		  successUrl: 'http://localhost:7777/payment/callback/success?returnAmount=1234',
@@ -139,7 +137,7 @@ const cartdetail={
 	    <td class="cart__price">{{cart.book.price}}</td>
 	    <td class="cart__quantity">
 		    <div class="pro-qty">
-	        	<input type="text" min="0" value="1">
+		    <input type="text" name="bookQuantity" min="0" value="1">
 	    	</div>
 	    </td>
 	    <td class="cart__total">{{cart.book.price*cart.quantity}}</td>
@@ -166,14 +164,21 @@ function init(){
 }
 
 function getCartList(){
+	let member = $("#member").val();
+	
 	$.ajax({
-		url:"/rest/cart?member_idx=2"
+		url:"/rest/cart?member_idx="+member
 		, type:"get"
 		, success:function(result, status, xhr){
 			console.log(result);
 			app1.cartList=result;
+			$("input[name='bookQuantity']").attr('value',Number($("input[name='bookQuantity']").val()));
 		}
 	});
+}
+
+function ordercomp(){
+	location.href="/ordercomp"
 }
 
 $(function(){

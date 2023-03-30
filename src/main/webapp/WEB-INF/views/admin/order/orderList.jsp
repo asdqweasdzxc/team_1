@@ -113,35 +113,6 @@
 			</section>
 			<div style="padding:50px;"></div>
 			<!-- /.content -->
-			
-			<!-- 세부사항 -->
-			<div class="container">
-			  <form id="form1">
-			    <div class="form-group">
-			      <label>주문자명</label>
-			      <input type="text" class="form-control">
-			    </div>
-			    <div class="form-group">
-			      <label>주문출발일</label>
-			      <input type="text" class="form-control">
-			    </div>
-			    <div class="form-group">
-			      <label>주문완료일</label>
-			      <input type="text" class="form-control">
-			    </div>
-			    <div class="form-group">
-			      <label>주문금액</label>
-			      <input type="text" class="form-control">
-			    </div>
-			    <div class="form-group">
-			      <label>주문방법</label>
-			      <input type="text" class="form-control">
-			    </div>
-			    <button type="button" class="btn btn-primary" id="bt_edit">Submit</button>
-			  </form>
-			</div>
-			<!-- /.세부사항 -->
-			
 		</div>
 		<!-- /.content-wrapper -->
   <%@ include file="../inc/footer.jsp" %>

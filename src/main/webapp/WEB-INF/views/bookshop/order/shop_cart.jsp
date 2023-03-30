@@ -4,21 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../inc/header.jsp"%>
+<%@ include file="./inc/header.jsp"%>
+<%!
+	int member_idx=2;
+%>
 <%
 	List cartList = (List)request.getAttribute("cartList");
 	out.print(cartList);
 %>
 </head>
 <body>
-    <%@ include file="../inc/preloader.jsp" %>
+    <%@ include file="./inc/preloader.jsp" %>
 
     <!-- Offcanvas Menu Begin -->
-    <%@ include file="../inc/main_navi.jsp"%>
+    <%@ include file="./inc/main_navi.jsp"%>
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <%@ include file="../inc/header_section.jsp"%>
+    <%@ include file="./inc/header_section.jsp"%>
     <!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
@@ -29,6 +32,7 @@
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
                         <span>Shopping cart</span>
+                        <input type="hidden" value="<%=member_idx%>" id="member">
                     </div>
                 </div>
             </div>
@@ -92,26 +96,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn">
-                        <a href="#">Continue Shopping</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-6">
-                    <div class="discount__content">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="submit" class="site-btn">Apply</button>
-                        </form>
-                    </div>
                 </div>
                 <div class="col-lg-4 offset-lg-2">
                     <div class="cart__total__procced">
@@ -129,19 +114,19 @@
     <!-- Shop Cart Section End -->
 
     <!-- Instagram Begin -->
-    <%@ include file="../inc/insta.jsp" %>
+    <%@ include file="./inc/instar.jsp" %>
     <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
-    <%@ include file="../inc/footer.jsp" %>
+    <%@ include file="./inc/footer.jsp" %>
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
-    <%@ include file="../inc/search.jsp" %>
+    <%@ include file="./inc/search.jsp" %>
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <%@ include file="../inc/footer_link.jsp" %>
+    <%@ include file="./inc/footer_link.jsp" %>
 <script type="text/javascript">
 var clientKey = 'test_ck_D4yKeq5bgrpokQP5OwJVGX0lzW6Y';
 var tossPayments = TossPayments(clientKey); 	// 클라이언트 키로 초기화하기
@@ -204,9 +189,8 @@ const cart={
 			});
 		}
 		, valUp(){
-			console.log(this);
-			console.log(ea);
-			ea++;
+			$("input[name='bookQuantity']").attr('value',Number($("input[name='bookQuantity']").val())+1);
+			console.log($("input[name='bookQuantity']").val());
 		}
 		,valDown(){
 			$("input[name='bookQuantity']").attr('value',Number($("input[name='bookQuantity']").val())-1);
@@ -236,8 +220,10 @@ function shopOrder(){
 }
 
 function getCartList(){
+	let member = $("#member").val();
+
 	$.ajax({
-		url:"/rest/cart?member_idx=2"
+		url:"/rest/cart?member_idx="+member
 		, type:"get"
 		, success:function(result, status, xhr){
 			console.log(result);

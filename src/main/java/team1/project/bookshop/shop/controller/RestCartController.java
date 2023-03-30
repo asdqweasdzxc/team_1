@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import team1.project.bookshop.domain.Cart;
 import team1.project.bookshop.domain.Member;
 import team1.project.bookshop.exception.CartException;
-import team1.project.bookshop.model.order.CartService;
+import team1.project.bookshop.order.model.CartService;
 import team1.project.bookshop.util.Message;
 
 @RestController
@@ -49,12 +49,10 @@ public class RestCartController {
 	}
 	
 	@GetMapping("/cart")
-	public List getCart(int member_idx) {
-		Member member = new Member();
+	public List getCartList(Member member) {
 		Cart cart = new Cart();
-		
-		member.setMember_idx(member_idx);
 		cart.setMember(member);
+		cartService.selectAll(cart);
 		
 		return cartService.selectAll(cart);
 	}
