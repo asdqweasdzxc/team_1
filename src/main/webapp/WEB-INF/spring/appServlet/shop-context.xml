@@ -69,9 +69,9 @@
  		<!-- 인증화면 링크 URL -->
  		<beans:property name="endpoint" value="https://accounts.google.com/o/oauth2/v2/auth"></beans:property>
  	 	<!-- google cloud platform에서 발급받은 client ID -->
- 		<beans:property name="client_id" value="48650259990-ujb5s923tornhlnj1hjdsht816o5o7cs.apps.googleusercontent.com"/>
+ 		<beans:property name="client_id" value=""/>
  		<!-- google cloud platform에서 발급받은 client Secret -->
- 		<beans:property name="client_secret" value="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"/>
+ 		<beans:property name="client_secret" value=""/>
  		<!-- Resource Owner 가 인증할 때, 콜백받을 우리 웹사이트 URI -->
  		<beans:property name="redirect_uri" value="http://localhost:7777/member/sns/google/callback"/>
  		<!-- 콜백받을 때, 구글이 우리에게 전달할 파라미터의 이름 -->
@@ -92,7 +92,7 @@
  		<!-- 인증화면 링크 URL -->
  		<beans:property name="endpoint" value="https://kauth.kakao.com/oauth/authorize"></beans:property>
  	 	<!-- kakao developers에서 발급받은 Rest Api ID -->
- 		<beans:property name="client_id" value="3b94eabef51e279390e28537b0ba9495"/>
+ 		<beans:property name="client_id" value=""/>
  		<!-- Resource Owner 가 인증할 때, 콜백받을 우리 웹사이트 URI -->
  		<beans:property name="redirect_uri" value="http://localhost:7777/member/sns/kakao/callback"/>
  		<!-- 콜백받을 때, 카카오가 우리에게 전달할 파라미터의 이름 -->
@@ -111,9 +111,9 @@
  		<!-- 인증화면 링크 URL -->
  		<beans:property name="endpoint" value="https://nid.naver.com/oauth2.0/authorize"></beans:property>
 	 	<!-- naver developers에서 발급받은 Rest Api ID -->
- 		<beans:property name="client_id" value="wV27qU8gfFDMxA3mY0Ay"/>
+ 		<beans:property name="client_id" value=""/>
 	 	<!-- naver developers에서 발급받은 client_secret -->
- 		<beans:property name="client_secret" value="dfMpAGUDAc"/>
+ 		<beans:property name="client_secret" value=""/>
  		<!-- Resource Owner 가 인증할 때, 콜백받을 우리 웹사이트 URI -->
  		<beans:property name="redirect_uri" value="http://localhost:7777/member/sns/naver/callback"/>
  		<!-- 콜백받을 때, 카카오가 우리에게 전달할 파라미터의 이름 -->
